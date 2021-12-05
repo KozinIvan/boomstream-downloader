@@ -24,6 +24,7 @@ headers = {
   'sec-fetch-mode': 'navigate',
   'sec-fetch-user': '?1',
   'sec-fetch-dest': 'document',
+  'referer': 'https://cool-gym.ru/',
   'accept-language': 'en-US,en;q=0.9,ru;q=0.8,es;q=0.7,de;q=0.6'}
 
 class App():
@@ -240,8 +241,10 @@ class App():
                 f.write(r.text)
 
             page = r.text
-
+		
         self.config = self.get_boomstream_config(page)
+		
+		"""
         if len(self.config['mediaData']['records']) == 0:
             print("Video record is not available. Probably, the live streaming" \
                   "has not finished yet. Please, try to download once the translation" \
@@ -249,6 +252,7 @@ class App():
                   "If you're sure that translation is finished, please create and issue" \
                   "in project github tracker and attach your boomstream.config.json file")
             return 1
+		"""
 
         self.token = self.get_token()
         self.m3u8_url = self.get_m3u8_url()
